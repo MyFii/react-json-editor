@@ -117,24 +117,24 @@ var schema = {
 };
 
 
-var SchemaEditor = React.createClass({
-  displayName: 'SchemaEditor',
+class SchemaEditor extends React.Component {
+  static displayName = 'SchemaEditor';
 
-  preventSubmit: function(event) {
+  preventSubmit = (event) => {
     event.preventDefault();
-  },
-  render: function() {
+  };
+
+  render() {
     return (
       <form onSubmit={this.preventSubmit}>
         <textarea rows="30" cols="60" onChange={this.props.onChange} value={this.props.value}></textarea>
       </form>
     );
   }
-});
+}
 
-
-var FieldWrapper = React.createClass({
-  render: function() {
+class FieldWrapper extends React.Component {
+  render() {
     var errors  = (this.props.errors || []).join('\n');
     var classes = [].concat(errors ? 'error' : [],
                             'form-element',
@@ -159,11 +159,10 @@ var FieldWrapper = React.createClass({
         </div>
     );
   }
-});
+}
 
-
-var SectionWrapper = React.createClass({
-  render: function() {
+class SectionWrapper extends React.Component {
+  render() {
     var errors  = (this.props.errors || []).join('\n');
     var level = this.props.path.length;
     var classes = [].concat(errors ? 'error' : [],
@@ -190,19 +189,18 @@ var SectionWrapper = React.createClass({
         </fieldset>
     );
   }
-});
+}
 
 
-module.exports = React.createClass({
-  displayName: 'FormDemoPage',
+module.exports = class extends React.Component {
+  static displayName = 'FormDemoPage';
 
-  getInitialState: function() {
-    return {
-      schema: schema,
-      text  : JSON.stringify(schema, null, 2)
-    };
-  },
-  update: function(event) {
+  state = {
+    schema: schema,
+    text  : JSON.stringify(schema, null, 2)
+  };
+
+  update = (event) => {
     var text = event.target.value;
     var schema;
     try {
@@ -211,11 +209,13 @@ module.exports = React.createClass({
     } catch (ex) {
       this.setState({ text: text });
     }
-  },
-  onFormSubmit: function(data, value, errors) {
+  };
+
+  onFormSubmit = (data, value, errors) => {
     this.setState({ button: value, data: data, errors: errors });
-  },
-  render: function() {
+  };
+
+  render() {
     return (
       <div>
         <ul className="flexContainer">
@@ -246,4 +246,4 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+};
