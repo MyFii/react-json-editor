@@ -1,22 +1,32 @@
 'use strict';
 
 
-module.exports = {
+module.exports.basics = {
     entry: [
         './demos/index'
     ],
     resolve: {
-        extensions: ['', '.js', '.jsx', '.md', '.css'],
+        extensions: ['.js', '.jsx', '.md', '.css'],
     },
 };
 
-module.exports.loaders = [
+module.exports.rules = [
     {
         test: /\.css$/,
-        loaders: ['style', 'css'],
-    },
-    {
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
         test: /\.md$/,
-        loader: 'html!../loaders/markdown',
-    },
+        use: [
+            {
+                loader: "html-loader"
+            },
+            {
+                loader: "markdown-loader",
+                options: {
+                    /* your options here */
+                }
+            }
+        ]
+    }
 ];

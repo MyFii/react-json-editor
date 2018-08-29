@@ -4,17 +4,20 @@
 module.exports = {
     entry: './lib/index',
     resolve: {
-        extensions: ['', '.js', '.jsx'],
-    },
-    externals: {
-        react: 'react',
-        'react/addons': 'react/addons'
+        extensions: ['.js', '.jsx'],
     },
     module: {
-        loaders: [{
+        rules: [
+          {
             test: /\.jsx?$/,
-            loaders: ['jsx-loader?harmony'],
             exclude: /node_modules/,
-        }]
-    }
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env', '@babel/preset-react']
+              }
+            }
+          }
+        ]
+      }    
 };
