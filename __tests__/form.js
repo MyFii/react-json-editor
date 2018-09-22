@@ -5,7 +5,7 @@ jest.dontMock('./schema.json')
 
 describe('React Form', () => {
   const React = require('react');
-  const ReactDOM = require('react-dom');
+  const ReactDOM = require('react-dom-factories');
   const TestUtils = require('react-addons-test-utils');
   const Form = require("..");
   const schema = require('./schema2.json');

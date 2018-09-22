@@ -28,9 +28,6 @@
     "email": "ismaelga@gmail.com"
   },
   "main": "dist/react-json-editor.js",
-  "peerDependencies": {
-    "react": ">=0.12.2 <16.0.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ismaelga/react-json-editor.git"
@@ -51,7 +48,9 @@
     "react": "<16.0.0",
     "react-addons-test-utils": "<16.0.0",
     "react-addons-update": "<16.0.0",
+    "react-create-class": "^1.0.0",
     "react-dom": "<16.0.0",
+    "react-dom-factories": "^1.0.2",
     "react-ghfork": "^0.3.0",
     "style-loader": "^0.8.3",
     "url-loader": "^0.5.5",
